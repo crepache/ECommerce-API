@@ -32,12 +32,12 @@ public class ClienteController {
 	
 	@RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public Cliente criar(@RequestBody Cliente cliente) {
-		return clienteService.criar(cliente);
+		return clienteService.persistir(cliente);
 	}
 	
 	@RequestMapping(method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public Cliente atualizar(@RequestBody Cliente cliente) {
-		return clienteService.atualizar(cliente);
+		return clienteService.persistir(cliente);
 	}
 
 	@RequestMapping(method = RequestMethod.DELETE, consumes = MediaType.APPLICATION_JSON_VALUE)

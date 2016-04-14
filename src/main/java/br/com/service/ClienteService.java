@@ -10,9 +10,7 @@ public interface ClienteService {
 	
 	Collection<Cliente> buscarTodos();
 	
-	Cliente criar(Cliente cliente);
-	
-	Cliente atualizar(Cliente cliente);
+	Cliente persistir(Cliente cliente);
 	
 	void remover(Cliente cliente);
 }
