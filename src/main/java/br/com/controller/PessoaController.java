@@ -10,39 +10,38 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.domain.Cliente;
-import br.com.service.ClienteService;
+import br.com.domain.Pessoa;
+import br.com.service.PessoaService;
 
 @RestController
-@RequestMapping(value = "/api/v1/clientes", produces = MediaType.APPLICATION_JSON_VALUE)
-public class ClienteController {
+@RequestMapping(value = "/api/v1/pessoas", produces = MediaType.APPLICATION_JSON_VALUE)
+public class PessoaController {
 	
 	@Autowired
-	private ClienteService clienteService;
+	private PessoaService pessoaService;
 
 	@RequestMapping(value = "/{codigo}", method = RequestMethod.GET)
-	public Cliente buscarPorCodigo(@PathVariable Long codigo) {
-		return clienteService.buscarPorCodigo(codigo);
+	public Pessoa buscarPorCodigo(@PathVariable Long codigo) {
+		return pessoaService.buscarPorCodigo(codigo);
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
-	public Collection<Cliente> buscarTodos() {
-		return clienteService.buscarTodos();
+	public Collection<Pessoa> buscarTodos() {
+		return pessoaService.buscarTodos();
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Cliente criar(@RequestBody Cliente cliente) {
-		return clienteService.persistir(cliente);
+	public Pessoa criar(@RequestBody Pessoa pessoa) {
+		return pessoaService.persistir(pessoa);
 	}
 	
 	@RequestMapping(method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Cliente atualizar(@RequestBody Cliente cliente) {
-		return clienteService.persistir(cliente);
+	public Pessoa atualizar(@RequestBody Pessoa pessoa) {
+		return pessoaService.persistir(pessoa);
 	}
 
 	@RequestMapping(method = RequestMethod.DELETE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public void excluir(Long codigo) {
-		Cliente cliente = clienteService.buscarPorCodigo(codigo);
-		clienteService.remover(cliente);
+	public void excluir(Long pessoa) {
+		pessoaService.remover(pessoaService.buscarPorCodigo(pessoa));
 	}
 }
